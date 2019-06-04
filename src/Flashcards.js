@@ -1,20 +1,14 @@
 import React from "react";
+import Flashcard from "./Flashcard";
 import { Card, } from "semantic-ui-react";
 
 const Flashcards = ({cards, }) => (
-  <Card.Group>
+  <Card.Group itemsPerRow={4}>
     {
       cards.map(flash_card => (
-        <Card>
-          <Card.Content>
-            <Card.Header>Question</Card.Header>
-            <Card.Description>{flash_card.front}</Card.Description>
-          </Card.Content>
-        </Card>
-
+        <Flashcard key={flash_card.id} {...flash_card} />
       ))
     }
-    
   </Card.Group>
 )
 
