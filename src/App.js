@@ -29,6 +29,14 @@ class App extends React.Component {
     })
     this.setState({ flashcards, });
   };
+  
+  // editCard = (id) => {
+  //   const flashcards= this.state.flashcards.filter( flashcard => {
+  //   if (flashcard.id == id)
+  //   render FlashcardForm;
+  //   })
+  //   this.setState({ flashcards, });
+  // };
 
   toggleForm = () => this.setState({ showForm: !this.state.showForm, })
 
