@@ -1,7 +1,7 @@
 import React from "react";
 import Flashcard from "./Flashcard";
 import FlashcardForm from "./FlashcardForm";
-import { Container, Header, Button, Icon, Segment, } from "semantic-ui-react";
+import { Container, Header, Button, Icon, Segment, Card } from "semantic-ui-react";
 
 class Flashcards extends React.Component {
   state = {
@@ -23,6 +23,15 @@ class Flashcards extends React.Component {
     this.setState({ flashcards: [...this.state.flashcards, flashcard], });
   };
 
+  editCard = (flashcardData) => {
+    const flashcards= this.state.flashcards.map( flashcard => {
+      if (flashcard.id === flashcardData.id)
+        return flashcardData;
+      return flashcard;
+    })
+    this.setState({ flashcards, });
+  };
+
   removeCard = (id) => {
     const flashcards= this.state.flashcards.filter( flashcard => {
       if (flashcard.id !== id)
@@ -32,8 +41,7 @@ class Flashcards extends React.Component {
   };
 
   renderCards = () => {
-    // add ability to edit in render
-    return this.state.flashcards.map( flashcard => <Flashcard key={flashcard.id} {...flashcard} remove={this.removeCard} />);
+    return this.state.flashcards.map( flashcard => <Flashcard key={flashcard.id} {...flashcard} edit={this.editCards} remove={this.removeCard} />);
   }
 
   toggleForm = () => this.setState({ showForm: !this.state.showForm, })
@@ -50,7 +58,9 @@ class Flashcards extends React.Component {
           </Button>
         </Segment>
         <br />
-        { this.renderCards() }
+        <Card.Group>
+          { this.renderCards() }
+        </Card.Group>
       </Container>
     )
   }
