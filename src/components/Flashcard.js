@@ -13,11 +13,13 @@ class Flashcard extends React.Component{
     return (
       <Card>
         {this.state.editing ? 
-          <FlashcardForm 
-            {...this.props}
-            edit={this.props.edit}
-            toggleEdit={this.toggleEdit}
-          />
+          <Card.Content>
+            <FlashcardForm 
+              {...this.props}
+              edit={this.props.edit}
+              toggleEdit={this.toggleEdit}
+            />
+          </Card.Content>
         :
           <Card.Content onClick={this.toggleCard}>
             {this.state.showBack ? <Header>{this.props.front}</Header> : <Header>{this.props.back}</Header> }

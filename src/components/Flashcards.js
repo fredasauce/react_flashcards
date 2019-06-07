@@ -41,7 +41,7 @@ class Flashcards extends React.Component {
   };
 
   renderCards = () => {
-    return this.state.flashcards.map( flashcard => <Flashcard key={flashcard.id} {...flashcard} edit={this.editCards} remove={this.removeCard} />);
+    return this.state.flashcards.map( flashcard => <Flashcard key={flashcard.id} {...flashcard} edit={this.editCard} remove={this.removeCard} />);
   }
 
   toggleForm = () => this.setState({ showForm: !this.state.showForm, })
@@ -58,7 +58,7 @@ class Flashcards extends React.Component {
           </Button>
         </Segment>
         <br />
-        <Card.Group>
+        <Card.Group itemsPerRow={4}>
           { this.renderCards() }
         </Card.Group>
       </Container>
